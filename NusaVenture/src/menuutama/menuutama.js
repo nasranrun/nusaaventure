@@ -109,3 +109,14 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.removeEventListener('click', playOnce);
   });
 });
+
+// Fungsi untuk mereset provinsi yang sudah terbuka
+function resetProvinsi() {
+    // Hapus data provinsi terbuka dari localStorage
+    localStorage.removeItem('provinsiTerbuka');
+    // Jika ingin reload halaman setelah reset:
+    location.reload();
+}
+
+// Event listener untuk tombol reset
+document.getElementById('reset-btn').addEventListener('click', resetProvinsi);

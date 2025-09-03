@@ -30,11 +30,9 @@ body {
     width: 240px;
     height: 70px;
     border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18), 0 2px 0 #C89F2D;
     cursor: pointer;
     transition: transform 0.12s, box-shadow 0.12s;
     object-fit: cover;
-    background: linear-gradient(180deg, #FFD966 0%, #F4B942 100%);
     border: none;
     outline: none;
     display: block;
