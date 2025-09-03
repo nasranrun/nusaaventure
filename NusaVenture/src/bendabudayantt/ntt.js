@@ -68,9 +68,17 @@ function showPopup(finalStars) {
             ${[...Array(3)].map((_,i)=>`<img src="../assets/img/stars1.png" style="width:50px;opacity:${i<finalStars?1:0.2}">`).join('')}
         </div>
         <button id="reloadBtn" style="padding:8px 24px;font-size:1.1rem;border-radius:8px;border:none;background:#4caf50;color:#fff;cursor:pointer;">Main Lagi</button>
+             <button id="backBtn" style="padding:8px 24px;font-size:1.1rem;border-radius:8px;border:none;background:#f44336;color:#fff;cursor:pointer;">Kembali</button>
     `;
-    popup.style.display = 'block';
+     popup.style.display = 'block';
     document.getElementById('reloadBtn').onclick = () => window.location.reload();
+    document.getElementById('backBtn').onclick = () => {
+        let progress = JSON.parse(localStorage.getItem('progress_game')) || {};
+        progress['ntt'] = progress['ntt'] || {};
+        progress['ntt'].allCompleted = true;
+        localStorage.setItem('progress_game', JSON.stringify(progress));
+        window.location.href = '../pilihprovinsi/pilihprovinsi.html'; // atau ke pilihan game Sumbar
+    };
 }
 
 function endGame() {

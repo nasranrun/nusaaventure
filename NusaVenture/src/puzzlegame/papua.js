@@ -111,10 +111,8 @@ function loadQuestion(idx) {
 
 function dragStart(e) {
   draggedPiece = e.target;
-  e.dataTransfer.setData('text/plain', e.target.id); // FIX
-  setTimeout(() => {
-    e.target.style.visibility = 'hidden';
-  }, 0);
+  e.dataTransfer.setData('text/plain', e.target.id);
+  // Hapus perubahan opacity agar gambar tidak transparan
 }
 
 function dragOver(e) {
@@ -125,14 +123,13 @@ function dropPiece(e) {
   e.preventDefault();
   if (!draggedPiece) return;
   if (e.target.classList.contains('slot') && !e.target.hasChildNodes()) {
-    e.target.appendChild(draggedPiece);
-    draggedPiece.style.visibility = 'visible';
+    e.target.appendChild(draggedPiece); // Pindahkan gambar, tidak menduplikasi
     draggedPiece = null;
     checkBoard();
   }
 }
 
-// FIX: drop ke pieces (area asal)
+// Drop ke area asal (pieces)
 const pieces = document.getElementById('pieces');
 pieces.addEventListener('dragover', function(e) {
   e.preventDefault();
@@ -142,8 +139,7 @@ pieces.addEventListener('drop', function(e) {
   const pieceId = e.dataTransfer.getData('text/plain');
   const piece = document.getElementById(pieceId);
   if (piece) {
-    piece.style.visibility = 'visible'; // penting biar nggak hilang
-    pieces.appendChild(piece);
+    pieces.appendChild(piece); // Pindahkan gambar ke area asal
     draggedPiece = null;
   }
 });
