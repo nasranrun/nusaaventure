@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+
+.map-container {
+    position: relative;
+}
+
+.map-container img {
+    width: 4%;
+    height: auto;
+    display: block;
+}
+
+.icon {
+    position: absolute;
+    width: 20px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Tambahkan style untuk ikon terkunci */
+.icon.locked {
+  filter: grayscale(100%);
+  opacity: 0.8; /* Lebih jelas, tidak terlalu transparan */
+  pointer-events: none;
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+#close-btn {
+    float: right;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+}

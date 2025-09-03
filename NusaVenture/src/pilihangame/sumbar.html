@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilihan Permainan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Pilih Permainan</h1>
+        <div class="games-container">
+            <div class="game-card" onclick="window.location.href='../puzzlegame/sumbar.html'">
+                <img src="../assets/img/pilihangamepuz.png" alt="Puzzle Game" class="game-icon">
+                <h2 class="game-title">Puzzle Game</h2>
+            </div>
+            <div class="game-card" onclick="window.location.href='../bendabudayasumbar/sumbar.html'">
+                <img src="../assets/img/klikbenda.png" alt="Klik Benda" class="game-icon">
+                <h2 class="game-title">Klik Benda</h2>
+            </div> 
+        </div>
+
+        <!-- Tombol Cara Bermain -->
+        <button id="htp-btn" class="howto-btn">Pengetahuan</button>
+
+        <!-- Tombol Kembali -->
+        <button class="howto-btn" onclick="window.location.href='../pilihprovinsi/pilihprovinsi.html'" style="margin-top:16px;background:#95c5e6;">Kembali</button>
+    </div>
+
+    <!-- Pop Up Cara Bermain -->
+    <div id="popup-htp" class="popup-htp">
+      <div class="popup-content">
+        <div class="slides">
+          <div class="slide active">
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/rumahgadang.jpg" alt="Tari Tandak Kepri">
+              </div>
+              <div class="slide-desc">
+                <h2>Rumah Gadang Mataram</h2>
+                <p>
+                <b>
+                Perbedaan Rumah Gadang
+                Perbedaan Rumah Gadang: Gonjong Limo → punya 5 gonjong, bentuk sederhana, biasanya untuk keluarga kecil.
+                Maharam → lebih besar dan megah, jumlah gonjong banyak, dipakai keluarga besar dan pusat adat.
+                Serambi Papek → memiliki serambi depan tertutup, fungsinya untuk aktivitas keluarga dan tamu.
+                Batingkek → rumah gadang bertingkat, langka, umumnya milik bangsawan.
+                </p>
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/Baju_Batabue.webp" alt="Tari Tandak Kepri">
+              </div>
+              <div class="slide-desc">
+                <h2>Baju batabue</h2>
+                <p>
+                <ol>
+                    <li>Asal: Pakaian adat khas Minangkabau, Sumatra Barat.</li>
+                    <li>Berhias benang emas dengan sulaman indah di kain songket.</li>
+                    <li>Benang emas melambangkan kemuliaan, kehormatan, dan kebahagiaan bagi mempelai.</li>
+                </ol>
+                </p>
+              </div>
+            </div>
+            <p>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/ayampop.jpg" alt="Tari Tandak Kepri">
+              </div>
+              <div class="slide-desc">
+                 <h2>Ayam pop</h2>
+                <p>
+                    Ayam Pop adalah masakan khas Minangkabau dari Sumatra Barat yang diolah dengan cara direbus menggunakan bumbu rempah lalu digoreng sebentar, disajikan dengan sambal tomat pedas.
+                </p></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/kerambit.png" alt="Puzzle Game">
+              </div>
+              <div class="slide-desc">
+                 <h2>Senjata Kerambit</h2>
+                Kerambit adalah senjata tradisional Minangkabau berbentuk pisau kecil melengkung menyerupai cakar harimau, digunakan untuk pertahanan diri dan melambangkan keberanian.
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/kecapi.jpg" alt="Puzzle Game">
+              </div>
+              <div class="slide-desc">
+                 <h2>Alat musik kecapi</h2>
+               Kecapi Sumbar adalah alat musik tradisional Minangkabau dari Sumatra Barat yang dimainkan dengan cara dipetik, biasanya untuk mengiringi dendang atau pantun, serta menjadi bagian penting dalam kesenian tradisi Minang.
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/tombakperisai2.jpg" alt="Puzzle Game">
+              </div>
+              <div class="slide-desc">
+                 <h2>alat musik serunai</h2>
+                Serunai adalah alat musik tiup tradisional Minangkabau dari Sumatra Barat yang terbuat dari bambu atau kayu, menghasilkan suara nyaring, biasanya dimainkan pada upacara adat, kesenian randai, dan pertunjukan tradisional.
+              </div>
+            </div>
+          </div>
+          
+          <!-- <div class="slide">
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/klikbenda.png" alt="Klik Benda">
+              </div>
+              <div class="slide-desc">
+                <h2>Tips & Skor</h2>
+                <ul>
+                  <li>Kumpulkan skor setinggi mungkin dengan menyelesaikan puzzle lebih cepat.</li>
+                  <li>Nikmati permainan sambil belajar budaya lokal!</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="popup-bottom">
+          <div class="slide-controls">
+            <button id="prev-slide" class="slide-btn">&lt;</button>
+            <button id="next-slide" class="slide-btn">&gt;</button>
+          </div>
+          <div class="slide-indicators">
+            <span class="slide-indicator active"></span>
+            <span class="slide-indicator"></span>
+           
+          </div>
+        </div>
+        <button id="close-htp" class="close-btn">Tutup</button>
+      </div>
+    </div>
+
+    <audio id="backsound" src="../assets/sound/bsnusa.mp4" loop autoplay></audio>
+    <script src="script.js"></script>
+</body>
+</html>

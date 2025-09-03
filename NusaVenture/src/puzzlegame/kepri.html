@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Puzzle Kepri</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2 id="kelas">Kepulauan Riau</h2>
+      <div id="soal"></div>
+      <p id="instruksi">Susun puzzle dengan potongan yang benar untuk melengkapi gambar<br>
+        dan jawab Quiz sesuai dengan gambar yang sudah disusun!</p>
+    </div>
+    <div class="main">
+      <div id="timer"></div>
+      <div class="puzzle-preview">
+        <img id="preview-img" src="../assets/img/bajukepri.jpg" alt="Preview" />
+      </div>
+      <div class="pieces" id="pieces"></div>
+      <div class="board" id="board"></div>
+    </div>
+    <div id="feedback" class="feedback"></div>
+    <div id="quiz" class="quiz"></div>
+  </div>
+  <div id="score-popup" class="score-popup" style="display:none;">
+    <div class="score-content">
+      <h2>Skor Kamu</h2>
+      <p>Puzzle: <span id="puzzle-score">0</span></p>
+      <p>Kuis: <span id="quiz-score">0</span></p>
+      <p>Total: <span id="total-score">0</span></p>
+      <button id="btn-kembali">Kembali</button>
+      <button id="btn-main-lagi">Main lagi</button>
+    </div>
+  </div>
+
+  <audio id="backsound" src="../assets/sound/bs2nusa.mp4" loop autoplay></audio>
+  <script src="kepri.js"></script>
+</body>
+</html>

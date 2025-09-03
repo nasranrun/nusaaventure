@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('../../src/assets/img/bendabudayamaluku.png') no-repeat center center;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500vh;
+    overflow: hidden;
+}
+
+body, .container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+
+/* .gabus {
+    position: absolute;
+    top: 55%;   
+    left: 14%;  
+    width: 320px; 
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+}
+.gasing {
+    position: absolute;
+    top: 65%;    
+    left: 70%;   
+    width: 120px; 
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+}
+
+.tudungmanto {
+    position: absolute;
+    top: 90%;    
+    left: 88%;   
+    width: 200px; 
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+}
+.gedombak {
+    position: absolute;
+    top: 95%;    
+    left: 14%;   
+    width: 200px; 
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+}
+.baladau {
+    position: absolute;
+    top: 40%;    
+    left: 68%;   
+    width: 110px; 
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+} */
+

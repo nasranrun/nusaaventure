@@ -1,0 +1,314 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: url('../../src/assets/img/background_puzzle.png') no-repeat center center;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  background: rgba(255,255,255,0.95);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 48px 36px 36px 36px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+.title {
+  font-size: 2.3rem;
+  color: #2a7957;
+  margin-bottom: 36px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 0 2px 8px #fff7;
+}
+.games-container {
+  display: flex;
+  flex-direction: row;      /* Ubah dari column ke row */
+  gap: 32px;                /* Lebih renggang antar kartu */
+  justify-content: center;  /* Tengah secara horizontal */
+  align-items: stretch;     /* Kartu sama tinggi */
+  margin-top: 24px;
+}
+.game-card {
+  background:  rgba(255,255,255,0.95);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(252,87,94,0.13);
+  padding: 28px 18px 18px 18px;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 180px;
+  min-height: 220px;
+}
+.game-card:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 8px 32px rgba(252,87,94,0.22);
+  background:  rgba(255,255,255,0.95);
+}
+.game-icon {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #fff7;
+  background: #fff;
+  padding: 8px;
+  transition: box-shadow 0.18s;
+}
+.game-title {
+  font-size: 1.3rem;
+  color: #95c5e6;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 2px 8px #57f9fc55;
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 8px;
+    max-width: 98vw;
+  }
+  .games-container {
+    gap: 18px;
+  }
+  .game-card {
+    padding: 18px 8px 12px 8px;
+  }
+  .game-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 900px) {
+  .games-container {
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+  .game-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* Tombol Cara Bermain */
+.howto-btn {
+  margin-top: 28px;
+  padding: 10px 24px;
+  border: none;
+  background: #2a7957;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.howto-btn:hover {
+  background: #239149;
+}
+
+/* Popup */
+.popup-htp {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.popup-htp.active {
+  display: flex;
+}
+.popup-content {
+  background: linear-gradient(180deg, #95ca7c 0%, #F0F0F0 100%);
+  padding: 32px 24px;
+  border-radius: 16px;
+  width: 800%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Membuat bagian bawah tetap di bawah */
+  align-items: center;
+  min-height: 320px; /* Atur sesuai kebutuhan */
+}
+
+.slides {
+  position: relative;
+  min-height: 140px;
+  flex: 1 1 auto; /* Membuat slides mengisi ruang tengah */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.slide-controls,
+.slide-indicators {
+  margin-bottom: 0;
+}
+
+.popup-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.close-btn {
+  margin-top: 16px;
+  padding: 8px 24px;
+  border: none;
+  background: #62bbef;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.slides {
+  position: relative;
+  min-height: 140px;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 1;
+  pointer-events: none;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+  pointer-events: auto;
+}
+.slide-controls {
+  margin: 12px 0;
+}
+.slide-btn {
+  padding: 5px 15px;
+  margin: 0 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  background: #f0f0f0;
+
+}
+.slide-btn:hover {
+  background: #d1eaff;
+}
+.slide-indicators {
+  margin-top: 8px;
+}
+.slide-indicator {
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin: 0 4px;
+  background: #bbb;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+.slide-indicator.active {
+  background: #2196f3;
+}
+.slide-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  min-height: 180px;
+  justify-content: center;
+}
+
+.slide-img {
+  flex: 0 0 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px #b3e6c7;
+  padding: 12px;
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.slide-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.slide-desc {
+  flex: 1 1 0;
+  text-align: left;
+  color: #2a7957;
+  font-size: 1.08rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 6px #95ca7c33;
+}
+
+.slide-desc h2 {
+  margin-top: 0;
+  color: #2196f3;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.slide-desc ul, .slide-desc ol {
+  margin: 0 0 0 18px;
+  padding: 0;
+}
+
+@media (max-width: 700px) {
+  .slide-row {
+    flex-direction: column;
+    gap: 16px;
+    min-height: unset;
+  }
+  .slide-img {
+    max-width: 120px;
+    max-height: 120px;
+    min-width: 80px;
+    min-height: 80px;
+    padding: 6px;
+  }
+  .slide-desc {
+    font-size: 0.98rem;
+    padding: 12px 8px;
+  }
+}
+

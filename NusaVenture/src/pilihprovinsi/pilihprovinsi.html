@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Provinsi</title>
+    <link rel="stylesheet" href="pilihprovinsi.css">
+</head>
+<body>
+
+<div class="map-container" style="position: relative;">
+    <!-- Gambar peta Indonesia -->
+    <img src="../assets/img/peta.png" alt="Peta Indonesia" style="width: 100%; display: block;">
+    
+    <!-- Icon rumah adat -->
+    <a href="../cutscene/sumbar.html">
+      <img src="../assets/img/sulbar.png" 
+        class="icon" 
+        style="top: 40%; left: 13%; position: absolute;" 
+        data-provinsi="sulawesi barat">
+    </a>
+
+    <a href="../cutscene/ntt.html">
+      <img src="../assets/img/ntt.png" 
+        class="icon locked" 
+        style="top: 68%; left: 60%; position: absolute;" 
+        data-provinsi="ntt">
+    </a>
+
+    <a href="../cutscene/maluku.html">
+      <img src="../assets/img/maluku.png" 
+        class="icon locked" 
+        style="top: 50%; left: 70%; position: absolute;" 
+        data-provinsi="maluku">
+    </a>
+
+    <a href="../cutscene/kepri.html">
+      <img src="../assets/img/kriau.png" 
+        class="icon locked" 
+        style="top: 28%; right: 68%; position: absolute;" 
+        data-provinsi="kepulauan riau">
+    </a>
+
+    <a href="../cutscene/papua.html">
+      <img src="../assets/img/papua.png" 
+        class="icon locked" 
+        style="top: 40%; left: 78%; position: absolute;" 
+        data-provinsi="Papua Barat">
+    </a>
+<!-- ...existing code... -->
+</div>
+
+<!-- Popup info -->
+
+<audio id="backsound" src="../assets/sound/bsnusa.mp4" loop autoplay></audio>
+<script src="pilihprovinsi.js"></script>
+</body>
+</html>

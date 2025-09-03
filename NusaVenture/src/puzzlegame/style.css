@@ -1,0 +1,220 @@
+body {
+  background: url('../../src/assets/img/background_puzzle.png') no-repeat center center;
+  font-family: 'Segoe UI', sans-serif;
+}
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 32px;
+}
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.header h2 {
+  color: #e85d04;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+#instruksi {
+  font-size: 1.1rem;
+  color: #555;
+}
+.main {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.puzzle-preview img {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  border: 2px solid #e85d04;
+  object-fit: cover;
+}
+.pieces {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 8px;
+  margin-right: 24px;
+}
+.piece {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  background: #fff;
+  cursor: grab;
+  object-fit: cover;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 8px;
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  min-height: 200px;
+}
+.slot {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px dashed #e85d04;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feedback {
+  text-align: center;
+  margin-top: 24px;
+}
+.feedback img {
+  width: 220px;
+  margin-top: 12px;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.popup-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  text-align: center;
+}
+.popup-content img {
+  width: 220px;
+  margin-bottom: 12px;
+}
+.quiz {
+  margin: 32px auto 0 auto;
+  max-width: 400px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 24px 18px;
+  text-align: left;
+}
+.quiz-question {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #e85d04;
+}
+.quiz-option {
+  display: block;
+  margin: 12px 0;
+  padding: 12px 0;
+  border: 2px solid #ff7a7a;
+  border-radius: 32px;
+  background: #fff;
+  color: #ff7a7a;
+  font-size: 1.1rem;
+  text-align: center;
+  position: relative;
+}
+
+.quiz-option:hover {
+  background: #ff7a7a;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  transform: scale(1.05);
+}
+
+.quiz-option input[type="radio"] {
+  display: none;
+}
+.quiz-option.selected {
+  background: #ff7a7a;
+  color: #fff;
+  border-color: #ff7a7a;
+}
+.quiz-btn {
+  margin-top: 14px;
+  background: #e85d04;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.quiz-btn:hover {
+  background: #de6945;
+   transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 154, 162, 0.4);
+}
+#timer {
+  width: 80px;
+  height: 80px;
+  background: #fff3f3;
+  border: 2px solid #ff7a7a;
+  border-radius: 50%;
+  color: #ff7a7a;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 32px;
+  margin-top: 16px;
+  float: left;
+  box-shadow: 0 2px 8px #ffdede;
+}
+.score-popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.score-content {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 240px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.score-content h2 {
+  margin-bottom: 16px;
+}
+.score-content button {
+  margin-top: 16px;
+  padding: 8px 24px;
+  border: none;
+  background: #2196f3;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  #timer {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+    margin-right: 12px;
+  }
+}
