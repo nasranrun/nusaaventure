@@ -1,3 +1,11 @@
+// =====================
+// Konfigurasi / Konstanta
+// =====================
+const CURRENT_PROVINCE = 'kepulauan riau'; // <- kunci progress provinsi ini
+
+// =====================
+// Data Soal
+// =====================
 const questions = [
   {
     preview: '../assets/img/rumahkepri.jpeg',
@@ -61,29 +69,54 @@ const questions = [
   }
 ];
 
+// =====================
+// State
+// =====================
 let current = 0;
 let draggedPiece = null;
 let timerInterval = null;
-let timeLeft =40;
+let timeLeft = 40;
 let puzzleScore = 0;
 let quizScore = 0;
 
+// =====================
+// Init
+// =====================
+window.addEventListener('load', () => {
+  hookPiecesContainerDrop();
+  loadQuestion(current);
+});
+
+// Backsound hanya play setelah interaksi user
+window.addEventListener('DOMContentLoaded', function () {
+  const backsound = document.getElementById('backsound');
+  if (!backsound) return;
+  document.body.addEventListener('click', function playOnce() {
+    backsound.play();
+    document.body.removeEventListener('click', playOnce);
+  });
+});
+
+// =====================
+// UI & Game Flow
+// =====================
 function loadQuestion(idx) {
+  // Header & pertanyaan
   document.getElementById('preview-img').src = questions[idx].preview;
   document.getElementById('soal').innerText = questions[idx].question;
   document.getElementById('feedback').innerHTML = '';
 
-  // Shuffle pieces
-  const pieces = [...questions[idx].pieces];
-  for (let i = pieces.length - 1; i > 0; i--) {
+  // Shuffle pieces (Fisher-Yates)
+  const piecesList = [...questions[idx].pieces];
+  for (let i = piecesList.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
+    [piecesList[i], piecesList[j]] = [piecesList[j], piecesList[i]];
   }
 
-  // Render pieces
-  const piecesDiv = document.getElementById('pieces');
-  piecesDiv.innerHTML = '';
-  pieces.forEach((src, i) => {
+  // Render pieces (area asal)
+  const piecesContainer = document.getElementById('pieces');
+  piecesContainer.innerHTML = '';
+  piecesList.forEach((src, i) => {
     const img = document.createElement('img');
     img.src = src;
     img.className = 'piece';
@@ -91,10 +124,10 @@ function loadQuestion(idx) {
     img.id = 'piece-' + i;
     img.dataset.filename = src.split('/').pop();
     img.addEventListener('dragstart', dragStart);
-    piecesDiv.appendChild(img);
+    piecesContainer.appendChild(img);
   });
 
-  // Render board
+  // Render board 3x3
   const board = document.getElementById('board');
   board.innerHTML = '';
   for (let i = 0; i < 9; i++) {
@@ -111,43 +144,49 @@ function loadQuestion(idx) {
 
 function dragStart(e) {
   draggedPiece = e.target;
-  e.dataTransfer.setData('text/plain', e.target.id); // FIX
-  setTimeout(() => {
-    e.target.style.visibility = 'hidden';
-  }, 0);
+  e.dataTransfer.setData('text/plain', e.target.id);
 }
 
 function dragOver(e) {
-  e.preventDefault();
+  e.preventDefault(); // izinkan drop
 }
 
 function dropPiece(e) {
   e.preventDefault();
   if (!draggedPiece) return;
-  if (e.target.classList.contains('slot') && !e.target.hasChildNodes()) {
-    e.target.appendChild(draggedPiece);
+
+  // gunakan currentTarget supaya pasti slot-nya, bukan child
+  const slot = e.currentTarget;
+  if (!slot.hasChildNodes()) {
+    slot.appendChild(draggedPiece);
+    // kalau sebelumnya kamu pernah menyembunyikan saat drag, pastikan terlihat lagi
     draggedPiece.style.visibility = 'visible';
     draggedPiece = null;
     checkBoard();
   }
 }
 
-// FIX: drop ke pieces (area asal)
-const pieces = document.getElementById('pieces');
-pieces.addEventListener('dragover', function(e) {
-  e.preventDefault();
-});
-pieces.addEventListener('drop', function(e) {
-  e.preventDefault();
-  const pieceId = e.dataTransfer.getData('text/plain');
-  const piece = document.getElementById(pieceId);
-  if (piece) {
-    piece.style.visibility = 'visible'; // penting biar nggak hilang
-    pieces.appendChild(piece);
-    draggedPiece = null;
-  }
-});
+// Area asal (#pieces) bisa menerima drop untuk mengembalikan potongan
+function hookPiecesContainerDrop() {
+  const piecesContainer = document.getElementById('pieces');
+  if (!piecesContainer) return;
 
+  piecesContainer.addEventListener('dragover', e => e.preventDefault());
+  piecesContainer.addEventListener('drop', e => {
+    e.preventDefault();
+    const pieceId = e.dataTransfer.getData('text/plain');
+    const piece = document.getElementById(pieceId);
+    if (piece) {
+      piece.style.visibility = 'visible';
+      piecesContainer.appendChild(piece);
+      draggedPiece = null;
+    }
+  });
+}
+
+// =====================
+// Popup Bantuan / Feedback
+// =====================
 function showPopup() {
   let popup = document.createElement('div');
   popup.className = 'popup-overlay';
@@ -156,12 +195,9 @@ function showPopup() {
       <img src="../assets/img/guidetour.png" alt="Salah" style="width:220px;">
       <br>
       <span style="color:red;font-size:1.2rem;">Coba lagi!</span>
-    </div>
-  `;
+    </div>`;
   document.body.appendChild(popup);
-  setTimeout(() => {
-    popup.remove();
-  }, 1500);
+  setTimeout(() => popup.remove(), 1500);
 }
 
 function showQuizPopup() {
@@ -172,12 +208,9 @@ function showQuizPopup() {
       <img src="../assets/img/guidetour.png" alt="Salah" style="width:220px;">
       <br>
       <span style="color:red;font-size:1.2rem;">Jawaban salah! Coba lagi.</span>
-    </div>
-  `;
+    </div>`;
   document.body.appendChild(popup);
-  setTimeout(() => {
-    popup.remove();
-  }, 1500);
+  setTimeout(() => popup.remove(), 1500);
 }
 
 function showTimeUpPopup() {
@@ -188,14 +221,14 @@ function showTimeUpPopup() {
       <img src="../assets/img/guidetour.png" alt="Waktu Habis" style="width:220px;">
       <br>
       <span style="color:red;font-size:1.2rem;">Waktu habis! Coba lagi.</span>
-    </div>
-  `;
+    </div>`;
   document.body.appendChild(popup);
-  setTimeout(() => {
-    popup.remove();
-  }, 1500);
+  setTimeout(() => popup.remove(), 1500);
 }
 
+// =====================
+// Quiz
+// =====================
 const quizOptions = [
   [
     "rumah riau belah bubung",
@@ -226,21 +259,25 @@ const quizAnswers = [
 function renderQuiz(idx) {
   const quizDiv = document.getElementById('quiz');
   quizDiv.innerHTML = '';
+
   const question = document.createElement('div');
   question.className = 'quiz-question';
+  question.textContent = 'Pilih jawaban yang benar:'; // isi teksnya
   quizDiv.appendChild(question);
 
   quizOptions[idx].forEach(opt => {
     const label = document.createElement('label');
     label.className = 'quiz-option';
+
     const radio = document.createElement('input');
     radio.type = 'radio';
     radio.name = 'quiz';
     radio.value = opt;
-    radio.onclick = function() {
+    radio.onclick = function () {
       document.querySelectorAll('.quiz-option').forEach(l => l.classList.remove('selected'));
       label.classList.add('selected');
     };
+
     label.appendChild(radio);
     label.appendChild(document.createTextNode(opt));
     quizDiv.appendChild(label);
@@ -256,36 +293,44 @@ function renderQuiz(idx) {
 function checkQuiz(idx) {
   const radios = document.getElementsByName('quiz');
   let selected = '';
-  for (let r of radios) {
-    if (r.checked) selected = r.value;
-  }
+  for (let r of radios) if (r.checked) selected = r.value;
+
   const quizDiv = document.getElementById('quiz');
   if (selected === quizAnswers[idx]) {
     quizDiv.innerHTML = '<span style="color:green;font-size:1.2rem;">Jawaban benar! ✅</span>';
     quizScore += 10;
   } else {
     quizDiv.innerHTML = '<span style="color:red;font-size:1.2rem;">Jawaban salah! Tetap lanjut.</span>';
+    // showQuizPopup(); // opsional
   }
+
   setTimeout(() => {
     current++;
     if (current < questions.length) {
       loadQuestion(current);
     } else {
+      // Semua puzzle & quiz selesai
       document.getElementById('feedback').innerHTML = '<span style="color:blue;font-size:1.3rem;">Semua puzzle & quiz selesai!</span>';
       document.getElementById('pieces').innerHTML = '';
       document.getElementById('board').innerHTML = '';
       quizDiv.innerHTML = '';
-      showScorePopup();
+      finalizeGame();
     }
   }, 1200);
 }
 
+// =====================
+// Cek Puzzle
+// =====================
 function checkBoard() {
   const board = document.getElementById('board');
   const slots = Array.from(board.children);
+
+  // lanjut hanya jika semua slot terisi
   if (slots.every(slot => slot.hasChildNodes())) {
     const userAnswer = slots.map(slot => slot.firstChild.dataset.filename);
     const correct = userAnswer.every((filename, i) => filename === questions[current].answer[i]);
+
     if (correct) {
       document.getElementById('feedback').innerHTML = '<span style="color:green;font-size:1.3rem;">Puzzle benar! 🎉</span>';
       puzzleScore += 10;
@@ -293,6 +338,7 @@ function checkBoard() {
       document.getElementById('feedback').innerHTML = '<span style="color:red;font-size:1.3rem;">Puzzle salah! Tetap lanjut ke quiz.</span>';
       showPopup();
     }
+
     setTimeout(() => {
       document.getElementById('feedback').innerHTML = '';
       renderQuiz(current);
@@ -300,9 +346,12 @@ function checkBoard() {
   }
 }
 
+// =====================
+// Timer
+// =====================
 function startTimer() {
   clearInterval(timerInterval);
-  timeLeft =40;
+  timeLeft = 40;
   updateTimerDisplay();
   timerInterval = setInterval(() => {
     timeLeft--;
@@ -311,7 +360,7 @@ function startTimer() {
       clearInterval(timerInterval);
       showTimeUpPopup();
       setTimeout(() => {
-        loadQuestion(current); // Reset puzzle jika waktu habis
+        loadQuestion(current); // reset puzzle jika waktu habis
       }, 1500);
     }
   }, 1000);
@@ -322,16 +371,9 @@ function updateTimerDisplay() {
   if (timerDiv) timerDiv.textContent = timeLeft + 's';
 }
 
-function onPuzzleCompleted() {
-  puzzleScore = 10;
-  if (quizScore > 0) showScorePopup();
-}
-
-function onQuizCompleted(isCorrect) {
-  quizScore = isCorrect ? 10 : 0;
-  if (puzzleScore > 0) showScorePopup();
-}
-
+// =====================
+// Skor & Progress
+// =====================
 function showScorePopup() {
   clearInterval(timerInterval);
   document.getElementById('puzzle-score').textContent = puzzleScore;
@@ -340,11 +382,29 @@ function showScorePopup() {
   document.getElementById('score-popup').style.display = 'flex';
 }
 
-document.getElementById('btn-kembali').onclick = function() {
+function markProvinceComplete() {
+  try {
+    const key = CURRENT_PROVINCE.toLowerCase();
+    const progress = JSON.parse(localStorage.getItem('progress_game')) || {};
+    progress[key] = progress[key] || {};
+    progress[key].allCompleted = true;
+    localStorage.setItem('progress_game', JSON.stringify(progress));
+  } catch (e) {
+    console.warn('Gagal menyimpan progress:', e);
+  }
+}
+
+function finalizeGame() {
+  markProvinceComplete();
+  showScorePopup();
+}
+
+// Tombol kontrol
+document.getElementById('btn-kembali').onclick = function () {
   window.location.href = '../pilihangame/kepri.html';
 };
 
-document.getElementById('btn-main-lagi').onclick = function() {
+document.getElementById('btn-main-lagi').onclick = function () {
   puzzleScore = 0;
   quizScore = 0;
   current = 0;
@@ -352,17 +412,10 @@ document.getElementById('btn-main-lagi').onclick = function() {
   loadQuestion(0);
 };
 
-window.onload = () => {
-  loadQuestion(current);
+document.getElementById('btn-reset').onclick = function () {
+  puzzleScore = 0;
+  quizScore = 0;
+  current = 0;
+  document.getElementById('score-popup').style.display = 'none';
+  loadQuestion(0);
 };
-
-// ...existing code...
-window.addEventListener('DOMContentLoaded', function() {
-  const backsound = document.getElementById('backsound');
-  // Untuk memastikan backsound play setelah interaksi user (agar autoplay tidak diblokir)
-  document.body.addEventListener('click', function playOnce() {
-    backsound.play();
-    document.body.removeEventListener('click', playOnce);
-  });
-});
-// ...existing code...

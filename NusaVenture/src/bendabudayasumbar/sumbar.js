@@ -77,7 +77,7 @@ function showPopup(finalStars) {
         progress['sulawesi barat'] = progress['sulawesi barat'] || {};
         progress['sulawesi barat'].allCompleted = true;
         localStorage.setItem('progress_game', JSON.stringify(progress));
-        window.location.href = '../pilihprovinsi/pilihprovinsi.html'; // atau ke pilihan game Sumbar
+        window.location.href = '../pilihprovinsi/pilihprovinsi.html';
     };
 }
 
