@@ -33,7 +33,13 @@ function typeDialogue() {
 }
 
 function showNextDialogue() {
-  if (isTyping) return;
+  // Jika sedang mengetik, langsung tampilkan seluruh teks
+  if (isTyping) {
+    dialogueElement.textContent = currentText;
+    charIndex = currentText.length;
+    isTyping = false;
+    return;
+  }
 
   // Jika sudah di dialog terakhir, redirect ke pilihangame
   if (dialogueIndex >= dialogues.length) {

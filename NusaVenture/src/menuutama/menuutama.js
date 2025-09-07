@@ -112,11 +112,16 @@ window.addEventListener('DOMContentLoaded', function() {
 
 // Fungsi untuk mereset provinsi yang sudah terbuka
 function resetProvinsi() {
+    // Debug: cek isi localStorage sebelum reset
+    console.log('Sebelum reset:', localStorage.getItem('progress_game'));
     // Hapus data provinsi terbuka dari localStorage
-    localStorage.removeItem('provinsiTerbuka');
-    // Jika ingin reload halaman setelah reset:
+    localStorage.removeItem('progress_game');
+    // Debug: cek isi localStorage setelah reset
+    console.log('Setelah reset:', localStorage.getItem('progress_game'));
+    // Tampilkan alert
+    alert('Data provinsi yang sudah terbuka berhasil direset!');
+    // Reload halaman setelah reset
     location.reload();
 }
 
-// Event listener untuk tombol reset
 document.getElementById('reset-btn').addEventListener('click', resetProvinsi);

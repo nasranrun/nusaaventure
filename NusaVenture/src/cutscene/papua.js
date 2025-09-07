@@ -22,6 +22,8 @@ const dialogueElement = document.getElementById("dialogue-text");
 const characterElement = document.getElementById("character");
 const nextBtn = document.getElementById("next-btn");
 
+// ...existing code...
+
 function typeDialogue() {
   if (charIndex < currentText.length) {
     dialogueElement.textContent += currentText.charAt(charIndex);
@@ -33,11 +35,17 @@ function typeDialogue() {
 }
 
 function showNextDialogue() {
-  if (isTyping) return;
+  // Jika sedang mengetik, langsung tampilkan seluruh teks
+  if (isTyping) {
+    dialogueElement.textContent = currentText;
+    charIndex = currentText.length;
+    isTyping = false;
+    return;
+  }
 
   // Jika sudah di dialog terakhir, redirect ke pilihangame
   if (dialogueIndex >= dialogues.length) {
-    window.location.href = "../pilihangame/papua.html";
+    window.location.href = "../pilihangame/sumbar.html";
     return;
   }
 
@@ -52,6 +60,7 @@ function showNextDialogue() {
   dialogueIndex++;
 }
 
+// ...existing code...
 nextBtn.addEventListener("click", showNextDialogue);
 
 
