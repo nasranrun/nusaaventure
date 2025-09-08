@@ -110,7 +110,7 @@ body {
   margin-top: 28px;
   padding: 10px 24px;
   border: none;
-  background: #2a7957;
+  background: #2a6f79;
   color: #fff;
   border-radius: 8px;
   cursor: pointer;
@@ -136,7 +136,7 @@ body {
   display: flex;
 }
 .popup-content {
-  background: linear-gradient(180deg, #95ca7c 0%, #F0F0F0 100%);
+  background: linear-gradient(180deg, #7cb8ca 0%, #F0F0F0 100%);
   padding: 32px 24px;
   border-radius: 16px;
   width: 800%;

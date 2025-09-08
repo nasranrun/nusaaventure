@@ -337,7 +337,7 @@ function showScorePopup() {
 }
 
 document.getElementById('btn-kembali').onclick = function() {
-  window.location.href = '../pilihangame/kepri.html';
+  window.location.href = '../pilihangame/papua.html';
 };
 
 document.getElementById('btn-main-lagi').onclick = function() {

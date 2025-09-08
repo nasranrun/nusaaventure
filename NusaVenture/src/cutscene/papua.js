@@ -45,7 +45,7 @@ function showNextDialogue() {
 
   // Jika sudah di dialog terakhir, redirect ke pilihangame
   if (dialogueIndex >= dialogues.length) {
-    window.location.href = "../pilihangame/sumbar.html";
+    window.location.href = "../pilihangame/papua.html";
     return;
   }
 

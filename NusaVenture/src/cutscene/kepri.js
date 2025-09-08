@@ -45,7 +45,7 @@ function showNextDialogue() {
 
   // Jika sudah di dialog terakhir, redirect ke pilihangame
   if (dialogueIndex >= dialogues.length) {
-    window.location.href = "../pilihangame/sumbar.html";
+    window.location.href = "../pilihangame/kepri.html";
     return;
   }
 
@@ -64,13 +64,13 @@ function showNextDialogue() {
 nextBtn.addEventListener("click", showNextDialogue);
 
 
-// langsung tampil pertama kali
+
 showNextDialogue();
 
 // ...existing code...
 window.addEventListener('DOMContentLoaded', function() {
   const backsound = document.getElementById('backsound');
-  // Untuk memastikan backsound play setelah interaksi user (agar autoplay tidak diblokir)
+
   document.body.addEventListener('click', function playOnce() {
     backsound.play();
     document.body.removeEventListener('click', playOnce);
