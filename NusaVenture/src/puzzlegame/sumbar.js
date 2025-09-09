@@ -321,11 +321,11 @@ function updateTimerDisplay() {
 function onPuzzleCompleted() {
   // Tandai puzzle sudah selesai
   let progress = JSON.parse(localStorage.getItem('progress_game')) || {};
-  progress['sulawesi barat'] = progress['sulawesi barat'] || {};
-  progress['sulawesi barat'].puzzle = true;
+  progress['sumatera barat'] = progress['sumatera barat'] || {};
+  progress['sumatera barat'].puzzle = true;
   localStorage.setItem('progress_game', JSON.stringify(progress));
   // Redirect ke halaman pilihan game
-  window.location.href = '../pilihgame/pilihgame.html';
+  window.location.href = '../pilihangame/sumbar.html';
 }
 
 function onQuizCompleted(isCorrect) {

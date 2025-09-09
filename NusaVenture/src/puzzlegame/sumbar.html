@@ -8,11 +8,14 @@
 <body>
   <div class="container">
     <div class="header">
-      <h2 id="kelas">Sumatra barat</h2>
+      <h2 id="kelas">Sumatra Barat</h2>
       <div id="soal"></div>
-      <p id="instruksi">Susun puzzle dengan potongan yang benar untuk melengkapi gambar<br>
-        dan jawab Quiz sesuai dengan gambar yang sudah disusun!</p>
+      <p id="instruksi">
+        Susun puzzle dengan potongan yang benar untuk melengkapi gambar<br>
+        dan jawab Quiz sesuai dengan gambar yang sudah disusun!
+      </p>
     </div>
+
     <div class="main">
       <div id="timer"></div>
       <div class="puzzle-preview">
@@ -21,9 +24,12 @@
       <div class="pieces" id="pieces"></div>
       <div class="board" id="board"></div>
     </div>
+
     <div id="feedback" class="feedback"></div>
     <div id="quiz" class="quiz"></div>
   </div>
+
+  <!-- Popup Skor -->
   <div id="score-popup" class="score-popup" style="display:none;">
     <div class="score-content">
       <h2>Skor Kamu</h2>
@@ -35,7 +41,54 @@
     </div>
   </div>
 
+  <!-- BackSound -->
   <audio id="backsound" src="../assets/sound/bs2nusa.mp4" loop autoplay></audio>
+
+  <!-- Script utama puzzle -->
   <script src="sumbar.js"></script>
+
+  <!-- Script Progress Manager -->
+  <script>
+    // ===== Progress Manager =====
+    function getProgress() {
+      return JSON.parse(localStorage.getItem('progress_game')) || {};
+    }
+
+    function saveProgress(progress) {
+      localStorage.setItem('progress_game', JSON.stringify(progress));
+    }
+
+    function markPuzzleCompleted(provinsi) {
+      let progress = getProgress();
+      progress[provinsi] = progress[provinsi] || {};
+      progress[provinsi].puzzle = true;
+      saveProgress(progress);
+    }
+
+    // ===== Integrasi Tombol Popup Skor =====
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnKembali = document.getElementById("btn-kembali");
+      const btnMainLagi = document.getElementById("btn-main-lagi");
+
+      function selesaiPuzzle() {
+        markPuzzleCompleted("sumbar");
+        console.log("Progress tersimpan:", getProgress());
+      }
+
+      if (btnKembali) {
+        btnKembali.addEventListener("click", () => {
+          selesaiPuzzle();
+          window.location.href = "../pilihangame/sumbar.html";
+        });
+      }
+
+      if (btnMainLagi) {
+        btnMainLagi.addEventListener("click", () => {
+          selesaiPuzzle();
+          window.location.reload();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
