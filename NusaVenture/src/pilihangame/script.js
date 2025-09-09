@@ -41,8 +41,6 @@ window.addEventListener('DOMContentLoaded', function() {
       slide.classList.remove("active");
       indicators[i].classList.remove("active");
     });
-    slides[index].classList.add("active");
-    indicators[index].classList.add("active");
     currentSlide = index;
   }
 
