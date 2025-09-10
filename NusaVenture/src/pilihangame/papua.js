@@ -18,38 +18,38 @@ function markPuzzleCompleted(provinsi) {
 // ===== Fungsi Klik Puzzle =====
 function mainPuzzle() {
   let progress = getProgress();
-  if (progress["sumbar"]?.puzzle === true) {
+  if (progress["papua"]?.puzzle === true) {
     return; // sudah pernah selesai
   }
 
   alert("Puzzle selesai ✅");
-  markPuzzleCompleted("sumbar");   // konsisten pakai sumbar
+  markPuzzleCompleted("papua");   // konsisten pakai papua
   window.location.reload();        // reload biar Klik Benda terbuka
 }
 
 // ===== Fungsi Klik Benda =====
 function klikBenda() {
   alert("Selamat! Kamu menemukan benda tersebut ✅");
-  window.location.href = "../bendabudayasumbar/sumbar.html"; 
+  window.location.href = "../bendabudayapapua/papua.html"; 
 }
 
 // ===== Inisialisasi setelah DOM siap =====
 window.addEventListener("DOMContentLoaded", () => {
   // Ambil progress dari localStorage
   let progress = getProgress();
-  let selesaiPuzzle = progress['sumbar'] && progress['sumbar'].puzzle === true;
+  let selesaiPuzzle = progress['papua'] && progress['papua'].puzzle === true;
   
 
   // Puzzle selalu bisa diakses
-  const puzzleCard = document.getElementById('puzzle-sumbar');
+  const puzzleCard = document.getElementById('puzzle-papua');
   if (puzzleCard) {
     puzzleCard.onclick = function() {
-      window.location.href = '../puzzlegame/sumbar.html';
+      window.location.href = '../puzzlegame/papua.html';
     };
   }
 
   // Klik Benda hanya bisa diakses jika puzzle selesai
-  const pilihBendaCard = document.getElementById('pilihbenda-sumbar');
+  const pilihBendaCard = document.getElementById('pilihbenda-papua');
   if (pilihBendaCard) {
     if (!selesaiPuzzle) {
       pilihBendaCard.classList.add('locked');
@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
       pilihBendaCard.style.opacity = '1';
       pilihBendaCard.title = '';
       pilihBendaCard.onclick = function() {
-        window.location.href = '../bendabudayasumbar/sumbar.html';
+        window.location.href = '../bendabudayapapua/papua.html';
       };
     }
   }
@@ -77,9 +77,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (popup && popupImage) {
     const images = [
-      "../assets/img/sumbar1.jpg",
-      "../assets/img/sumbar2.jpg",
-      "../assets/img/sumbar3.jpg"
+      "../assets/img/papua1.jpg",
+      "../assets/img/papua2.jpg",
+      "../assets/img/papua3.jpg"
     ];
     let currentIndex = 0;
 
