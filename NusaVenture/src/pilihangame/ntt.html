@@ -1,135 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilihan Permainan</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilihan Permainan</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Pilih Permainan</h1>
-        <div class="games-container">
-            <div class="game-card" onclick="window.location.href='../puzzlegame/ntt.html'">
-                <img src="../assets/img/pilihangamepuz.png" alt="Puzzle Game" class="game-icon">
-                <h2 class="game-title">Puzzle Game</h2>
-            </div>
-            <div class="game-card" onclick="window.location.href='../bendabudayantt/ntt.html'">
-                <img src="../assets/img/klikbenda.png" alt="Klik Benda" class="game-icon">
-                <h2 class="game-title">Klik Benda</h2>
-            </div> 
-        </div>
-
-        <!-- Tombol Cara Bermain -->
-        <button id="htp-btn" class="howto-btn">Pengetahuan</button>
-
-        <!-- Tombol Kembali -->
-        <button class="howto-btn" onclick="window.location.href='../pilihprovinsi/pilihprovinsi.html'" style="margin-top:16px;background:#95c5e6;">Kembali</button>
-    </div>
-
-    <!-- Pop Up Cara Bermain -->
-    <div id="popup-htp" class="popup-htp">
-      <div class="popup-content">
-        <div class="slides">
-          <div class="slide active">
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/mbaruniangntt.jpeg" alt="Tari Tandak Kepri">
-              </div>
-              <div class="slide-desc">
-                <h2>Rumah adat Mbaru niang</h2>
-                <p>
-                <b>
-                Rumah adat Mbaru Niang berasal dari Flores, Nusa Tenggara Timur. Bentuknya kerucut bertingkat, atapnya dari ilalang, berfungsi sebagai tempat tinggal, musyawarah, dan upacara adat masyarakat Manggarai.
-                </p>
-              </div>
-            </div>
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/seidagingsapintt.png" alt="Tari Tandak Kepri">
-              </div>
-              <div class="slide-desc">
-                <h2>Makanan Se'i daging sapi</h2>
-                <p>
-                Se’i Daging Sapi adalah makanan khas Nusa Tenggara Timur berupa daging sapi yang diasap dengan kayu kosambi atau kayu lain beraroma khas, dibumbui sederhana (garam, bawang, rempah), rasanya gurih dan sedikit smoky, biasanya disajikan dengan sambal lu’at dan nasi.
-                </p>
-              </div>
-            </div>
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/pakaiansukusabuntt.png" alt="Tari Tandak Kepri">
-              </div>
-              <div class="slide-desc">
-                <h2>Pakain Suku sabu</h2>
-                <p>
-                    Pakaian adat Suku Sabu terbuat dari kain tenun ikat, pria memakai hinggi, wanita memakai lawo, dan biasanya dikenakan dalam acara adat serta upacara penting.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="slide">
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/tenunntt3.webp" alt="Puzzle Game">
-              </div>
-              <div class="slide-desc">
-                <h2>Kain Tenun</h2>
-                Kain tenun khas NTT berasal dari Sumba, Flores, Timor, dan Sabu, dibuat dengan teknik ikat tradisional, bercorak flora-fauna dan simbol adat, digunakan untuk pakaian adat, upacara, serta identitas budaya masyarakat NTT.
-              </div>
-            </div>
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/patungkayu2.jpg" alt="Puzzle Game">
-              </div>
-              <div class="slide-desc">
-                <h2>Patung kayu</h2>
-                Patung kayu khas NTT berasal dari Sumba, Flores, dan Timor, dibuat dengan ukiran sederhana namun penuh makna. Biasanya menggambarkan manusia atau hewan, berfungsi sebagai simbol leluhur, pelindung, sarana ritual adat, hiasan rumah, hingga identitas seni dan budaya masyarakat NTT.
-              </div>
-            </div>
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/parang.webp" alt="Puzzle Game">
-              </div>
-              <div class="slide-desc">
-                <h2>Senjata Parang</h2>
-                Parang adalah senjata tradisional Indonesia, termasuk digunakan di Nusa Tenggara Timur, berbentuk mirip pedang dengan bilah panjang dan tajam. Fungsinya sebagai alat berburu, berkebun, perlengkapan sehari-hari, sekaligus senjata dalam upacara adat dan simbol keberanian masyarakat.
-              </div>
-            </div>
-          </div>
-          
-          <!-- <div class="slide">
-            <div class="slide-row">
-              <div class="slide-img">
-                <img src="../assets/img/klikbenda.png" alt="Klik Benda">
-              </div>
-              <div class="slide-desc">
-                <h2>Tips & Skor</h2>
-                <ul>
-                  <li>Kumpulkan skor setinggi mungkin dengan menyelesaikan puzzle lebih cepat.</li>
-                  <li>Nikmati permainan sambil belajar budaya lokal!</li>
-                </ul>
-              </div>
-            </div>
-          </div> -->
-        </div>
-        <div class="popup-bottom">
-          <div class="slide-controls">
-            <button id="prev-slide" class="slide-btn">&lt;</button>
-            <button id="next-slide" class="slide-btn">&gt;</button>
-          </div>
-          <div class="slide-indicators">
-            <span class="slide-indicator active"></span>
-            <span class="slide-indicator"></span>
-           
-          </div>
-        </div>
-        <button id="close-htp" class="close-btn">Tutup</button>
+  <div class="container">
+    <h1 class="title">Pilih Permainan</h1>
+    <div class="games-container">
+      <div class="game-card" id="puzzle-ntt">
+        <img src="../assets/img/pilihangamepuz.png" alt="Puzzle Game" class="game-icon">
+        <h2 class="game-title">Puzzle Game</h2>
       </div>
-    </div>
 
-    <audio id="backsound" src="../assets/sound/bs2nusa.mp4" loop autoplay></audio>
+      <div class="game-card" id="pilihbenda-ntt">
+        <img src="../assets/img/klikbenda.png" alt="Klik Benda" class="game-icon">
+        <h2 class="game-title">Klik Benda</h2>
+      </div>
+    </div>  
 
-    <script src="ntt.js"></script>
+    <!-- Tombol -->
+    <button id="htp-btn" class="howto-btn">Pengetahuan</button>
+    <button class="howto-btn" onclick="window.location.href='../pilihprovinsi/pilihprovinsi.html'" style="margin-top:16px;background:#95c5e6;">Kembali</button>
+  </div>
+
+  <!-- Pop Up Pengetahuan -->
+  <div id="popup-htp" class="popup-htp"> ... konten popup kamu ... </div>
+
+  <audio id="backsound" src="../assets/sound/bs2nusa.mp4" loop autoplay></audio>
+  
+  <!-- Panggil hanya satu JS -->
+  <script src="ntt.js"></script>
 </body>
 </html>

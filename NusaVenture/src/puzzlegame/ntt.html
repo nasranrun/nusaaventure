@@ -37,5 +37,47 @@
 
   <audio id="backsound" src="../assets/sound/bs2nusa.mp4" loop autoplay></audio>
   <script src="ntt.js"></script>
+   <script>
+    // ===== Progress Manager =====
+    function getProgress() {
+      return JSON.parse(localStorage.getItem('progress_game')) || {};
+    }
+
+    function saveProgress(progress) {
+      localStorage.setItem('progress_game', JSON.stringify(progress));
+    }
+
+    function markPuzzleCompleted(provinsi) {
+      let progress = getProgress();
+      progress[provinsi] = progress[provinsi] || {};
+      progress[provinsi].puzzle = true;
+      saveProgress(progress);
+    }
+
+    // ===== Integrasi Tombol Popup Skor =====
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnKembali = document.getElementById("btn-kembali");
+      const btnMainLagi = document.getElementById("btn-main-lagi");
+
+      function selesaiPuzzle() {
+        markPuzzleCompleted("ntt");
+        console.log("Progress tersimpan:", getProgress());
+      }
+
+      if (btnKembali) {
+        btnKembali.addEventListener("click", () => {
+          selesaiPuzzle();
+          window.location.href = "../pilihangame/ntt.html";
+        });
+      }
+
+      if (btnMainLagi) {
+        btnMainLagi.addEventListener("click", () => {
+          selesaiPuzzle();
+          window.location.reload();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
