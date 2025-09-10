@@ -1,4 +1,3 @@
-// ===== Awal Script =====
 // ===== Progress Manager =====
 function getProgress() {
   return JSON.parse(localStorage.getItem('progress_game')) || {};
@@ -23,24 +22,22 @@ function mainPuzzle() {
   }
 
   alert("Puzzle selesai ✅");
-  markPuzzleCompleted("sumbar");   // konsisten pakai sumbar
-  window.location.reload();        // reload biar Klik Benda terbuka
+  markPuzzleCompleted("sumbar");
+  window.location.reload(); // reload biar Klik Benda terbuka
 }
 
 // ===== Fungsi Klik Benda =====
 function klikBenda() {
   alert("Selamat! Kamu menemukan benda tersebut ✅");
-  window.location.href = "../bendabudayasumbar/sumbar.html"; 
+  window.location.href = "../bendabudayasumbar/sumbar.html";
 }
 
 // ===== Inisialisasi setelah DOM siap =====
 window.addEventListener("DOMContentLoaded", () => {
-  // Ambil progress dari localStorage
+  // --- Progress Puzzle ---
   let progress = getProgress();
   let selesaiPuzzle = progress['sumbar'] && progress['sumbar'].puzzle === true;
-  
 
-  // Puzzle selalu bisa diakses
   const puzzleCard = document.getElementById('puzzle-sumbar');
   if (puzzleCard) {
     puzzleCard.onclick = function() {
@@ -48,7 +45,6 @@ window.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Klik Benda hanya bisa diakses jika puzzle selesai
   const pilihBendaCard = document.getElementById('pilihbenda-sumbar');
   if (pilihBendaCard) {
     if (!selesaiPuzzle) {
@@ -68,47 +64,57 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Popup Slider ---
-  const popup = document.getElementById("popup");
-  const popupImage = document.getElementById("popup-image");
-  const prevSlideBtn = document.getElementById("prev-slide");
-  const nextSlideBtn = document.getElementById("next-slide");
-  const closePopupBtn = document.getElementById("close-popup");
+  // --- Popup Pengetahuan ---
+  const htpBtn = document.getElementById("htp-btn");
+  const popup = document.getElementById("popup-htp");
+  const closeBtn = document.getElementById("close-htp");
 
-  if (popup && popupImage) {
-    const images = [
-      "../assets/img/sumbar1.jpg",
-      "../assets/img/sumbar2.jpg",
-      "../assets/img/sumbar3.jpg"
-    ];
-    let currentIndex = 0;
+  const slides = document.querySelectorAll(".popup-htp .slide");
+  const indicators = document.querySelectorAll(".slide-indicator");
+  const prevBtn = document.getElementById("prev-slide");
+  const nextBtn = document.getElementById("next-slide");
 
-    function showImage(index) {
-      popupImage.src = images[index];
-      popup.style.display = "flex";
-    }
+  let currentSlide = 0;
 
-    prevSlideBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      showImage(currentIndex);
+  function updateSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      indicators[i].classList.remove("active");
     });
-
-    nextSlideBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    });
-
-    closePopupBtn.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
-
-    showImage(currentIndex);
+    slides[index].classList.add("active");
+    indicators[index].classList.add("active");
+    currentSlide = index;
   }
+
+  if (htpBtn && popup && closeBtn) {
+    htpBtn.addEventListener("click", () => {
+      popup.classList.add("active");
+      updateSlide(0);
+    });
+
+    closeBtn.addEventListener("click", () => {
+      popup.classList.remove("active");
+    });
+  }
+
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener("click", () => {
+      updateSlide((currentSlide + 1) % slides.length);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      updateSlide((currentSlide - 1 + slides.length) % slides.length);
+    });
+  }
+
+  indicators.forEach((dot, index) => {
+    dot.addEventListener("click", () => updateSlide(index));
+  });
 
   // --- BackSound ---
   const backsound = document.getElementById("backsound");
   if (backsound) {
-    backsound.volume = 0.2; 
+    backsound.volume = 0.2;
     backsound.play().catch(() => {
       console.log("Autoplay diblokir, menunggu interaksi pengguna.");
     });
@@ -122,5 +128,3 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-// ===== Akhir Script =====
-
