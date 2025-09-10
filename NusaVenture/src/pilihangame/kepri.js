@@ -41,15 +41,15 @@ window.addEventListener("DOMContentLoaded", () => {
   
 
   // Puzzle selalu bisa diakses
-  const puzzleCard = document.getElementById('puzzle-sumbar');
+  const puzzleCard = document.getElementById('puzzle-kepri');
   if (puzzleCard) {
     puzzleCard.onclick = function() {
-      window.location.href = '../puzzlegame/sumbar.html';
+      window.location.href = '../puzzlegame/kepri.html';
     };
   }
 
   // Klik Benda hanya bisa diakses jika puzzle selesai
-  const pilihBendaCard = document.getElementById('pilihbenda-sumbar');
+  const pilihBendaCard = document.getElementById('pilihbenda-kepri');
   if (pilihBendaCard) {
     if (!selesaiPuzzle) {
       pilihBendaCard.classList.add('locked');
@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
       pilihBendaCard.style.opacity = '1';
       pilihBendaCard.title = '';
       pilihBendaCard.onclick = function() {
-        window.location.href = '../bendabudayasumbar/sumbar.html';
+        window.location.href = '../bendabudayakepri/kepri.html';
       };
     }
   }
@@ -77,9 +77,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (popup && popupImage) {
     const images = [
-      "../assets/img/sumbar1.jpg",
-      "../assets/img/sumbar2.jpg",
-      "../assets/img/sumbar3.jpg"
+      "../assets/img/kepri1.jpg",
+      "../assets/img/kepri2.jpg",
+      "../assets/img/kepri3.jpg"
     ];
     let currentIndex = 0;
 
