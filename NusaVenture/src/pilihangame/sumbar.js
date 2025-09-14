@@ -74,6 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const prevSlideBtn = document.getElementById("prev-slide");
   const nextSlideBtn = document.getElementById("next-slide");
   const closePopupBtn = document.getElementById("close-popup");
+  const howtoBtn = document.getElementById("htp-btn");
 
   if (popup && popupImage) {
     const images = [
