@@ -26,12 +26,137 @@
     <button class="howto-btn" onclick="window.location.href='../pilihprovinsi/pilihprovinsi.html'" style="margin-top:16px;background:#95c5e6;">Kembali</button>
   </div>
 
-  <!-- Pop Up Pengetahuan -->
-  <div id="popup-htp" class="popup-htp"> ... konten popup kamu ... </div>
-
-  <audio id="backsound" src="../assets/sound/bs2nusa.mp4" loop autoplay></audio>
   
-  <!-- Panggil hanya satu JS -->
-  <script src="maluku.js"></script>
+ <div id="popup-htp" class="popup-htp">
+      <div class="popup-content">
+        <div class="slides">
+          <div class="slide active">
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/bajucelemaluku.jpg" alt="Tari Tandak Kepri">
+              </div>
+              <div class="slide-desc">
+                <h2>Baju Cele</h2>
+                <p>
+                <b>
+                <ol>
+                  <li>Asal-usul: Baju Cele adalah pakaian adat tradisional Maluku, biasanya dikenakan saat upacara adat, pernikahan, dan pesta rakyat.</li>
+                  <li>Makna: Motif garis dan warna cerah melambangkan keceriaan, kebersamaan, dan semangat masyarakat Maluku.</li>
+                  <li>Wanita memakai kebaya Baju Cele dengan kain panjang dan Pria biasanya memakai kemeja atau jas dengan kain tenun senada.</li>
+                </ol>
+                </p>
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/nasilapolamaluku.jpg" alt="Tari Tandak Kepri">
+              </div>
+              <div class="slide-desc">
+                <h2>Nasi Lapola</h2>
+                <p>
+                <ol>
+                <b>
+                 <li>Asal-usul: Makanan tradisional dari Maluku, sudah ada sejak lama dan jadi bagian dari budaya makan masyarakat setempat.</li>
+                 <li>Bahan utama: Nasi yang dimasak bersama jagung, kacang tolo (kacang hijau hitam), kelapa parut, dan sedikit garam.</li>
+                 <li>Penyajian: Biasanya disantap dengan ikan bakar, colo-colo (sambal Maluku), atau lauk tradisional lainnya.</li>
+                </ol>
+                </p>
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/taricakalelemaluku.jpeg" alt="Tari Tandak Kepri">
+              </div>
+              <div class="slide-desc">
+                <h2>Tari Cakalalele</h2>
+                <p>
+                  <b>
+                    <ol>
+                    <li>Asal-usul: Tari tradisional dari Maluku, awalnya merupakan tarian perang yang dilakukan para prajurit.</li>
+                    <li>Fungsi: Dulu dipakai untuk menyambut perang, sekarang jadi tarian adat untuk penyambutan tamu, upacara adat, dan festival budaya.</li>
+                    <li>Fungsi: Dulu dipakai untuk menyambut perang, sekarang jadi tarian adat untuk penyambutan tamu, upacara adat, dan festival budaya.</li>
+                </ol>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/kaintenun2.jpeg" alt="Puzzle Game">
+              </div>
+              <div class="slide-desc">
+                <h2>Kain Tenun</h2>
+                <ol>
+                  <li>Asal-usul: Kain tradisional hasil kerajinan tangan masyarakat Maluku, diwariskan turun-temurun.</li>
+                  <li>Motif & warna: Biasanya punya motif geometris, garis, atau flora-fauna dengan warna-warna cerah dan kontras.</li>
+                  <li>Fungsi:Dipakai sebagai pakaian adat (misalnya dipadukan dengan Baju Cele), Digunakan dalam upacara adat, pernikahan, dan acara resmi dan Jadi simbol status sosial & identitas budaya Maluku.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/tahuri_fu.png" alt="Puzzle Game">
+              </div>
+              <div class="slide-desc">
+                <h2>Alat musik tahuri fu</h2>
+                <ol>
+                  <li>Asal-usul: Tahuri adalah alat musik tradisional Maluku yang terbuat dari kerang laut besar.</li>
+                  <li>Cara main: Ditiup seperti terompet → menghasilkan suara keras & bergema..</li>
+                  <li>Makna budaya: Melambangkan kekuatan alam & kedekatan masyarakat Maluku dengan laut.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/tempayan.png" alt="Puzzle Game">
+              </div>
+              <div class="slide-desc">
+                <h2>Tempayan</h2>
+                <ol>
+                  <li>Asal-usul: Tempayan adalah wadah tradisional yang sudah ada sejak masa lampau di Nusantara, termasuk Maluku.</li>
+                  <li>Bentuk: Terbuat dari tanah liat (keramik), berukuran besar, berbentuk bulat dengan mulut agak lebar..</li>
+                  
+                </ol>
+              </div>
+            </div>
+          </div>
+          
+          <!-- <div class="slide">
+            <div class="slide-row">
+              <div class="slide-img">
+                <img src="../assets/img/klikbenda.png" alt="Klik Benda">
+              </div>
+              <div class="slide-desc">
+                <h2>Tips & Skor</h2>
+                <ul>
+                  <li>Kumpulkan skor setinggi mungkin dengan menyelesaikan puzzle lebih cepat.</li>
+                  <li>Nikmati permainan sambil belajar budaya lokal!</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="popup-bottom">
+          <div class="slide-controls">
+            <button id="prev-slide" class="slide-btn">&lt;</button>
+            <button id="next-slide" class="slide-btn">&gt;</button>
+          </div>
+          <div class="slide-indicators">
+            <span class="slide-indicator active"></span>
+            <span class="slide-indicator"></span>
+           
+          </div>
+        </div>
+        <button id="close-htp" class="close-btn">Tutup</button>
+      </div>
+    </div>
+
+    <audio id="backsound" src="../assets/sound/bsnusa.mp4" loop autoplay></audio>
+
+     <!-- Script -->
+    <script src="maluku.js"></script>
 </body>
 </html>
+

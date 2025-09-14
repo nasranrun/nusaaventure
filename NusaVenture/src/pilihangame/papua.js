@@ -17,35 +17,35 @@ function markPuzzleCompleted(provinsi) {
 // ===== Fungsi Klik Puzzle =====
 function mainPuzzle() {
   let progress = getProgress();
-  if (progress["ntt"]?.puzzle === true) {
+  if (progress["papua"]?.puzzle === true) {
     return; // sudah pernah selesai
   }
 
   alert("Puzzle selesai ✅");
-  markPuzzleCompleted("ntt");
+  markPuzzleCompleted("papua");
   window.location.reload(); // reload biar Klik Benda terbuka
 }
 
 // ===== Fungsi Klik Benda =====
 function klikBenda() {
   alert("Selamat! Kamu menemukan benda tersebut ✅");
-  window.location.href = "../bendabudayantt/ntt.html";
+  window.location.href = "../bendabudayapapua/papua.html";
 }
 
 // ===== Inisialisasi setelah DOM siap =====
 window.addEventListener("DOMContentLoaded", () => {
   // --- Progress Puzzle ---
   let progress = getProgress();
-  let selesaiPuzzle = progress['ntt'] && progress['ntt'].puzzle === true;
+  let selesaiPuzzle = progress['papua'] && progress['papua'].puzzle === true;
 
-  const puzzleCard = document.getElementById('puzzle-ntt');
+  const puzzleCard = document.getElementById('puzzle-papua');
   if (puzzleCard) {
     puzzleCard.onclick = function() {
-      window.location.href = '../puzzlegame/ntt.html';
+      window.location.href = '../puzzlegame/papua.html';
     };
   }
 
-  const pilihBendaCard = document.getElementById('pilihbenda-ntt');
+  const pilihBendaCard = document.getElementById('pilihbenda-papua');
   if (pilihBendaCard) {
     if (!selesaiPuzzle) {
       pilihBendaCard.classList.add('locked');
@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
       pilihBendaCard.style.opacity = '1';
       pilihBendaCard.title = '';
       pilihBendaCard.onclick = function() {
-        window.location.href = '../bendabudayantt/ntt.html';
+        window.location.href = '../bendabudayapapua/papua.html';
       };
     }
   }

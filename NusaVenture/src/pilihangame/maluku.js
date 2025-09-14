@@ -1,4 +1,3 @@
-// ===== Awal Script =====
 // ===== Progress Manager =====
 function getProgress() {
   return JSON.parse(localStorage.getItem('progress_game')) || {};
@@ -23,24 +22,22 @@ function mainPuzzle() {
   }
 
   alert("Puzzle selesai ✅");
-  markPuzzleCompleted("maluku");   // konsisten pakai maluku
-  window.location.reload();        // reload biar Klik Benda terbuka
+  markPuzzleCompleted("maluku");
+  window.location.reload(); // reload biar Klik Benda terbuka
 }
 
 // ===== Fungsi Klik Benda =====
 function klikBenda() {
   alert("Selamat! Kamu menemukan benda tersebut ✅");
-  window.location.href = "../bendabudayamaluku/maluku.html"; 
+  window.location.href = "../bendabudayamaluku/maluku.html";
 }
 
 // ===== Inisialisasi setelah DOM siap =====
 window.addEventListener("DOMContentLoaded", () => {
-  // Ambil progress dari localStorage
+  // --- Progress Puzzle ---
   let progress = getProgress();
   let selesaiPuzzle = progress['maluku'] && progress['maluku'].puzzle === true;
-  
 
-  // Puzzle selalu bisa diakses
   const puzzleCard = document.getElementById('puzzle-maluku');
   if (puzzleCard) {
     puzzleCard.onclick = function() {
@@ -48,7 +45,6 @@ window.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Klik Benda hanya bisa diakses jika puzzle selesai
   const pilihBendaCard = document.getElementById('pilihbenda-maluku');
   if (pilihBendaCard) {
     if (!selesaiPuzzle) {
@@ -68,8 +64,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Popup Slider ---
-const htpBtn = document.getElementById("htp-btn");
+  // --- Popup Pengetahuan ---
+  const htpBtn = document.getElementById("htp-btn");
   const popup = document.getElementById("popup-htp");
   const closeBtn = document.getElementById("close-htp");
 
@@ -118,7 +114,7 @@ const htpBtn = document.getElementById("htp-btn");
   // --- BackSound ---
   const backsound = document.getElementById("backsound");
   if (backsound) {
-    backsound.volume = 0.2; 
+    backsound.volume = 0.2;
     backsound.play().catch(() => {
       console.log("Autoplay diblokir, menunggu interaksi pengguna.");
     });
@@ -132,5 +128,3 @@ const htpBtn = document.getElementById("htp-btn");
     });
   }
 });
-// ===== Akhir Script =====
-

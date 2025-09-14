@@ -64,20 +64,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-<<<<<<< HEAD
-  // --- Popup Slider ---
-  const popup = document.getElementById("popup");
-  const popupImage = document.getElementById("popup-image");
-  const prevSlideBtn = document.getElementById("prev-slide");
-  const nextSlideBtn = document.getElementById("next-slide");
-  const closePopupBtn = document.getElementById("close-popup");
-  const howtoBtn = document.getElementById("htp-btn");
-=======
   // --- Popup Pengetahuan ---
   const htpBtn = document.getElementById("htp-btn");
   const popup = document.getElementById("popup-htp");
   const closeBtn = document.getElementById("close-htp");
->>>>>>> bae308d1a1ede4d0d8fdb1aefdca8dd6a4c71b89
 
   const slides = document.querySelectorAll(".popup-htp .slide");
   const indicators = document.querySelectorAll(".slide-indicator");
