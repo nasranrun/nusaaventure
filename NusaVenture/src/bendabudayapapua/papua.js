@@ -74,8 +74,8 @@ function showPopup(finalStars) {
     document.getElementById('reloadBtn').onclick = () => window.location.reload();
     document.getElementById('backBtn').onclick = () => {
         let progress = JSON.parse(localStorage.getItem('progress_game')) || {};
-        progress['Papua'] = progress['Papua'] || {};
-        progress['Papua'].allCompleted = true;
+        progress['papua barat'] = progress['papua barat'] || {};
+        progress['papua barat'].allCompleted = true;
         localStorage.setItem('progress_game', JSON.stringify(progress));
         window.location.href = '../pilihprovinsi/pilihprovinsi.html';
     };
@@ -201,7 +201,7 @@ function showScorePopup(skor) {
 }
 
 document.getElementById('btn-kembali-game').onclick = function() {
-  window.location.href = 'sumbar.html'; // Jika ingin kembali ke pilihan game Sumbar
+  window.location.href = 'kepri.html'; // Jika ingin kembali ke pilihan game Sumbar
   // Jika file pilihan game Sumbar ada di folder lain, sesuaikan path-nya
   // window.location.href = '../pilihangame/sumbar.html';
 };

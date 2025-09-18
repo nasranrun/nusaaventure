@@ -27,6 +27,23 @@ icons.forEach(icon => {
     icon.classList.remove('locked');
     icon.parentElement.style.pointerEvents = 'auto';
   }
+  else if (
+    progressGame['papua barat'] &&
+    progressGame['papua barat'].allCompleted &&
+    provinsi === 'maluku'
+  ) {
+    icon.classList.remove('locked');
+    icon.parentElement.style.pointerEvents = 'auto';
+  }
+  else if (
+    progressGame['maluku'] &&
+    progressGame['maluku'].allCompleted &&
+    provinsi === 'ntt'
+  ) {
+    icon.classList.remove('locked');
+    icon.parentElement.style.pointerEvents = 'auto';
+  }
+ 
   // Provinsi lain tetap terkunci
 });
 

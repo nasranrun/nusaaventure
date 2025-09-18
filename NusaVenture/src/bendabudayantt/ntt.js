@@ -68,16 +68,16 @@ function showPopup(finalStars) {
             ${[...Array(3)].map((_,i)=>`<img src="../assets/img/stars1.png" style="width:50px;opacity:${i<finalStars?1:0.2}">`).join('')}
         </div>
         <button id="reloadBtn" style="padding:8px 24px;font-size:1.1rem;border-radius:8px;border:none;background:#4caf50;color:#fff;cursor:pointer;">Main Lagi</button>
-             <button id="backBtn" style="padding:8px 24px;font-size:1.1rem;border-radius:8px;border:none;background:#f44336;color:#fff;cursor:pointer;">Kembali</button>
+        <button id="backBtn" style="padding:8px 24px;font-size:1.1rem;border-radius:8px;border:none;background:#f44336;color:#fff;cursor:pointer;">Kembali</button>
     `;
-     popup.style.display = 'block';
+    popup.style.display = 'block';
     document.getElementById('reloadBtn').onclick = () => window.location.reload();
     document.getElementById('backBtn').onclick = () => {
         let progress = JSON.parse(localStorage.getItem('progress_game')) || {};
-        progress['ntt'] = progress['ntt'] || {};
-        progress['ntt'].allCompleted = true;
+        progress['papua barat'] = progress['papua barat'] || {};
+        progress['papua barat'].allCompleted = true;
         localStorage.setItem('progress_game', JSON.stringify(progress));
-        window.location.href = '../pilihprovinsi/pilihprovinsi.html'; // atau ke pilihan game Sumbar
+        window.location.href = '../pilihprovinsi/pilihprovinsi.html';
     };
 }
 
@@ -185,7 +185,6 @@ function startGame() {
 
 window.onload = startGame;
 
-// ...existing code...
 window.addEventListener('DOMContentLoaded', function() {
   const backsound = document.getElementById('backsound');
   // Untuk memastikan backsound play setelah interaksi user (agar autoplay tidak diblokir)
@@ -194,4 +193,18 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.removeEventListener('click', playOnce);
   });
 });
-// ...existing code...
+
+function showScorePopup(skor) {
+  document.getElementById('skor-text').textContent = "Skor kamu: " + skor;
+  document.getElementById('popup-skor').style.display = 'block';
+  document.getElementById('btn-kembali-game').style.display = 'block';
+}
+
+document.getElementById('btn-kembali-game').onclick = function() {
+  window.location.href = 'kepri.html'; // Jika ingin kembali ke pilihan game Sumbar
+  // Jika file pilihan game Sumbar ada di folder lain, sesuaikan path-nya
+  // window.location.href = '../pilihangame/sumbar.html';
+};
+
+// Panggil showScorePopup(skor) saat game selesai
+// Contoh: showScorePopup(100);
